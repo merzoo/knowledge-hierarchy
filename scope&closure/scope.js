@@ -29,7 +29,7 @@
     console.log(b);
   }
 
-  foo(); // error -> Uncaoght ReferenceError: b is not defined
+  foo(); // error -> Uncaught ReferenceError: b is not defined
 }
 
 // hosting
@@ -48,7 +48,7 @@
     console.log(bar);
     let bar = 3;
   }
-  foo(); // error -> Uncaoght ReferenceError: bar is not defined
+  foo(); // error -> Uncaught ReferenceError: bar is not defined
 }
 
 // function arguments has been declared

@@ -72,3 +72,75 @@ const getNum = numGenerator();
   // 清理定时器，释放 name
   clearInterval(timer);
 }
+
+// excerises
+
+const case1 = (() => {
+  const foo = (function () {
+    const v = 0;
+    return () => {
+      return v++;
+    };
+  })();
+
+  for (let i = 0; i < 10; i++) {
+    foo();
+  }
+
+  console.log(foo()); // 10
+})();
+
+const case2 = (() => {
+  const foo = () => {
+    const arr = [];
+    var i;
+
+    for (i = 0; i < 10; i++) {
+      arr[i] = function () {
+        console.log(i);
+      };
+    }
+
+    return arr[0];
+  };
+
+  foo()(); // 10
+})();
+
+const case3 = (() => {
+  var fn = null;
+  const foo = () => {
+    var a = 2;
+    function innerFoo() {
+      console.log(a);
+    }
+    fn = innerFoo;
+  };
+
+  const bar = () => {
+    fn();
+  };
+
+  foo(); // fn = function innerFoo() { console.log(2)}
+  bar(); // fn() => console.log(2) => 2
+})();
+
+const case4 = (() => {
+  var fn = null;
+  const foo = () => {
+    var a = 2;
+    function innerFoo() {
+      console.log(c);
+      console.log(a);
+    }
+    fn = innerFoo;
+  };
+
+  const bar = () => {
+    var c = 100;
+    fn();
+  };
+
+  foo();
+  bar(); // console.log(c) => Uncaught Reference Error: c is not defined
+})();
